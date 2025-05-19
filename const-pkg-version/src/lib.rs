@@ -1,4 +1,4 @@
-//! Constant expression macros for your package version.
+//! Constant expressions for your package version.
 //!
 //! # Example
 //!
@@ -15,7 +15,7 @@
 //!
 //! # Features
 //!
-//! * `debug`: Implements [`Debug`](https://doc.rust-lang.org/stable/std/fmt/trait.Debug.html) for [`Version`] (enabled by default).
+//! * `debug`: Implements [`Debug`] for [`Version`] (enabled by default).
 //! * `defmt`: Implements [`defmt::Format`] for [`Version`].
 //! * `serde`: Implements [`serde::Deserialize`] and [`serde::Serialize`] for [`Version`].
 //! * `semver`: Implements [`TryFrom<crate::Version>`][TryFrom] for [`semver::Version`].

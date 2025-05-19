@@ -1,0 +1,12 @@
+[package]
+name = "full-metadata"
+version = "42.129.316-pre-thingy+built-with-love"
+
+edition = "2024"
+publish = []
+
+[dependencies]
+const-pkg-version = { path = "../../const-pkg-version" }
+
+[dev-dependencies]
+assert2 = "0.3.15"

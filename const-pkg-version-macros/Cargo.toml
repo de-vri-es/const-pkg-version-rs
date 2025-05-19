@@ -1,0 +1,16 @@
+[package]
+name = "const-pkg-version-macros"
+description = "macros for the const-pkg-version crate"
+version = "0.1.0"
+license = "BSD-2-Clause"
+
+edition = "2024"
+publish = ["crates-io"]
+
+repository = "https://github.com/de-vri-es/const-pkg-version-rs"
+documentation = "https://docs.rs/const-pkg-version"
+
+[lib]
+proc-macro = true
+
+[dependencies]

@@ -1,7 +1,16 @@
 [package]
 name = "const-pkg-version"
+description = "constant expressions for your package version (no-std/no-alloc compatible)"
 version = "0.1.0"
+license = "BSD-2-Clause"
+
 edition = "2024"
+publish = ["crates-io"]
+
+repository = "https://github.com/de-vri-es/const-pkg-version-rs"
+documentation = "https://docs.rs/const-pkg-version"
+keywords = ["version", "const", "constant", "package", "crate"]
+categories = ["development-tools", "no-std::no-alloc", "no-std"]
 
 [features]
 default = ["debug"]
@@ -11,7 +20,7 @@ serde = ["dep:serde"]
 semver = ["dep:semver"]
 
 [dependencies]
-const-pkg-version-macros = { version= "0.1.0", path = "../const-pkg-version-macros" }
+const-pkg-version-macros = { version= "=0.1.0", path = "../const-pkg-version-macros" }
 defmt = { version = "1.0.1", optional = true }
 semver = { version = "1.0.26", default-features = false, optional = true }
 serde = { version = "1.0.219", default-features = false, optional = true, features = ["derive"] }
