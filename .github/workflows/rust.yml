@@ -1,0 +1,57 @@
+name: CI
+on:
+  push: { branches: "main" }
+  pull_request: { branches: "*" }
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      RUSTFLAGS: -D warnings
+      RUSTDOCFLAGS: -D warnings
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Install Rust ${{ matrix.rust }}
+        run: |
+          rustup install ${{ matrix.rust }} --profile minimal
+          rustup default ${{ matrix.rust }}
+      - name: Build
+        run: cargo build --workspace --all-features --all-targets --color=always
+      - name: Test
+        run: cargo test --workspace --all-features --all-targets --color=always
+      - name: Clippy
+        run: cargo clippy --workspace --all-features --all-targets --color=always
+      - name: Doc
+        run: cargo doc --workspace --all-features --color=always
+
+  check-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore ~/.cargo folder
+        id: cache-cargo-folder
+        uses: actions/cache/restore@v4
+        with:
+          key: ${{ runner.os }}-check-readme
+          path: |
+            ~/.cargo
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Install Rust ${{ matrix.rust }}
+        run: |
+          rustup install ${{ matrix.rust }} --profile minimal
+          rustup default ${{ matrix.rust }}
+      - name: Install cargo-readme
+        run: cargo install cargo-readme --color=always
+      - name: Save ~/.cargo folder
+        if: steps.cache-cargo-folder.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.cache-cargo-folder.outputs.cache-primary-key }}
+          path: |
+            ~/.cargo
+
+      - name: Regenerate README.md
+        run: ./update-readme
+      - name: Check if README.md has changed
+        run: git diff --exit-code

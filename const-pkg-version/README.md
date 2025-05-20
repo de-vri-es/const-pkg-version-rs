@@ -1,6 +1,6 @@
 # const-pkg-version
 
-Constant expression macros for your package version.
+Constant expressions for your package version.
 
 ## Example
 
@@ -20,7 +20,7 @@ const BUILD_METADATA: Option<&str> = const_pkg_version::build_metadata!();
 * `debug`: Implements [`Debug`] for [`Version`] (enabled by default).
 * `defmt`: Implements [`defmt::Format`] for [`Version`].
 * `serde`: Implements [`serde::Deserialize`] and [`serde::Serialize`] for [`Version`].
-* `semver`: Implements [`TryFrom<crate::Version>`][TryFrom] for [`semver::Version`].
+* `semver`: Implements [`TryFrom<crate::Version>`] for [`semver::Version`].
 
 [`Version`]: https://docs.rs/const-pkg-version/latest/const_pkg_version/struct.Version.html
 [`Debug`]: https://doc.rust-lang.org/stable/std/fmt/trait.Debug.html
@@ -28,3 +28,4 @@ const BUILD_METADATA: Option<&str> = const_pkg_version::build_metadata!();
 [`serde::Deserialize`]: https://docs.rs/serde/latest/serde/trait.Deserialize.html
 [`serde::Serialize`]: https://docs.rs/serde/latest/serde/trait.Serialize.html
 [`semver::Version`]: https://docs.rs/semver/latest/semver/struct.Version.html
+[`TryFrom<crate::Version>`]: https://doc.rust-lang.org/stable/std/convert/trait.TryFrom.html

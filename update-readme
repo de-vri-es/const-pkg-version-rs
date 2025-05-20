@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "$(dirname "$0")/const-pkg-version"
+cargo readme -o README.md
