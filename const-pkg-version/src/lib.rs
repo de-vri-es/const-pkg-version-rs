@@ -18,7 +18,7 @@
 //! * `debug`: Implements [`Debug`] for [`Version`] (enabled by default).
 //! * `defmt`: Implements [`defmt::Format`] for [`Version`].
 //! * `serde`: Implements [`serde::Deserialize`] and [`serde::Serialize`] for [`Version`].
-//! * `semver`: Implements [`TryFrom<crate::Version>`][TryFrom] for [`semver::Version`].
+//! * `semver`: Implements [`TryFrom<crate::Version>`] for [`semver::Version`].
 #![no_std]
 #![warn(missing_docs)]
 

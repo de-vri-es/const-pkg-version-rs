@@ -8,3 +8,4 @@
 [`serde::Deserialize`]: https://docs.rs/serde/latest/serde/trait.Deserialize.html
 [`serde::Serialize`]: https://docs.rs/serde/latest/serde/trait.Serialize.html
 [`semver::Version`]: https://docs.rs/semver/latest/semver/struct.Version.html
+[`TryFrom<crate::Version>`]: https://doc.rust-lang.org/stable/std/convert/trait.TryFrom.html
