@@ -4,22 +4,12 @@ on:
   pull_request: { branches: "*" }
 
 jobs:
-  build_and_test:
-    name:  rust
+  build-and-test:
     runs-on: ubuntu-latest
     env:
       RUSTFLAGS: -D warnings
       RUSTDOCFLAGS: -D warnings
     steps:
-      - name: Restore cached crates.io index
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-          key: rust-ubuntu-latest
-          save-always: true
       - name: Checkout code
         uses: actions/checkout@master
       - name: Install Rust ${{ matrix.rust }}
@@ -34,3 +24,34 @@ jobs:
         run: cargo clippy --workspace --all-features --all-targets --color=always
       - name: Doc
         run: cargo doc --workspace --all-features --color=always
+
+  check-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore ~/.cargo folder
+        id: cache-cargo-folder
+        uses: actions/cache/restore@v4
+        with:
+          key: ${{ runner.os }}-check-readme
+          path: |
+            ~/.cargo
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Install Rust ${{ matrix.rust }}
+        run: |
+          rustup install ${{ matrix.rust }} --profile minimal
+          rustup default ${{ matrix.rust }}
+      - name: Install cargo-readme
+        run: cargo install cargo-readme --color=always
+      - name: Save ~/.cargo folder
+        if: steps.cache-cargo-folder.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.cache-cargo-folder.outputs.cache-primary-key }}
+          path: |
+            ~/.cargo
+
+      - name: Regenerate README.md
+        run: ./update-readme
+      - name: Check if README.md has changed
+        run: git diff --exit-code
