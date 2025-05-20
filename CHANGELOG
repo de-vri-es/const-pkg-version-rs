@@ -1,0 +1,7 @@
+# v0.1.0 - 2025-05-19
+- [add][minor] Add `version!()` macro and `Version` struct.
+- [add][minor] Add `major!()` macro.
+- [add][minor] Add `minor!()` macro.
+- [add][minor] Add `patch!()` macro.
+- [add][minor] Add `pre_release!()` macro.
+- [add][minor] Add `build_metadata!()` macro.
