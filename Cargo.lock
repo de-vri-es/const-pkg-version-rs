@@ -34,7 +34,7 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "const-pkg-version"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "const-pkg-version-macros",
  "defmt",
@@ -44,7 +44,7 @@ dependencies = [
 
 [[package]]
 name = "const-pkg-version-macros"
-version = "0.1.0"
+version = "0.1.1"
 
 [[package]]
 name = "defmt"
