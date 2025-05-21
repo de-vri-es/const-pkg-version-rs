@@ -1,7 +1,7 @@
 # Unreleased
 - [fix][patch] Fix links in documentation and README.
 
-# v0.1.0 - 2025-05-19
+# Version 0.1.0 - 2025-05-19
 - [add][minor] Add `version!()` macro and `Version` struct.
 - [add][minor] Add `major!()` macro.
 - [add][minor] Add `minor!()` macro.
